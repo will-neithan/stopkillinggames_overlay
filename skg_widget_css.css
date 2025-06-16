@@ -1,0 +1,125 @@
+#fireworks {
+  display: flex;
+  justify-content: center;
+}
+  #fireworksVideo {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    z-index: 3;
+    opacity: 0;
+    transition: opacity 3s ease;
+  }
+  #fireworksVideo.fadeIn {
+    opacity: 0.6;
+  }
+  #fireworksVideo.fadeOut {
+    opacity: 0;
+  }
+#progress {
+  float: right;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: {{widgetWidth}}px;
+  align-items: center;
+  justify-content: flex-end; 
+}
+  #header {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+    #text {
+      display: flex;
+      padding-bottom: .7em;
+      text-align: center;
+      font-family: {{topTextfont}}, Arial, sans-serif;
+      font-size: {{topTextFontSize}}px;
+      color: {{topTextColor}};
+      font-weight: {{topTextFontWeight}};
+      font-style: {{topTextFontStyle}};
+    }
+  #footer {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    line-height: {{countdownFontSize}}px;
+    align-items: center;
+  }
+    #countdown {
+      display: inline-flex;
+      width: 100%;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      margin-top: .5em;
+      font-family: {{countdownfont}}, Arial, sans-serif;
+      font-size: {{countdownFontSize}}px;
+      color: {{countdownColor}};
+      font-weight: {{countdownFontWeight}};
+      font-style: {{countdownFontStyle}};
+    }
+    #progress .label {
+      display: inline-flex;
+      align-items: center;
+      height: 20px;
+      margin-top: .5em;
+      background: {{websiteBackgroundColor}}; 
+      border-radius: {{websiteBackgroundRadius}}px;
+      font-family: {{websitefont}}, Arial, sans-serif;
+      font-size: {{websiteFontSize}}px;
+      color: {{websiteColor}};
+      font-weight: {{websiteFontWeight}};
+      font-style: {{websiteFontStyle}}; 
+    }
+  #progress #bar {
+    width: 94%;
+    height: 20px;
+    line-height: 23px;
+    padding: {{progressBarHeight}}px 22px;
+    border-radius: {{progressBarBackgroundRadius}}px; 
+    background: {{progressBarGoalBackgroundColor}};
+    font-family: {{progressBarFont}}, Arial, sans-serif;
+    font-size: {{progressBarFontSize}}px;
+    font-weight: {{progressBarFontWeight}};
+    font-style: {{progressBarFontStyle}};
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+    flex-wrap: wrap; 
+    }
+    #progress #bar::before , #progress #bar .loading {
+      content: '';
+      background: {{progressBarGoalBackgroundColor}};
+      border-radius: {{progressBarBackgroundRadius}}px; 
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: -2; }
+    #progress #bar .loading {
+      background: {{progressBarSignaturesBackgroundColor}};
+      min-width: 13%;
+      width: 13%;
+      z-index: 0;
+      display: flex;
+      align-items: center;
+      transition: .5s all ease-in-out; }
+      #progress #bar .loading .amount {
+        position: relative;
+        left: 24px;
+         }
+  #progress .loading .amount {
+    color: {{progressBarSignaturesColor}};
+  }
+  #progress .endgame .amount {
+    color: {{progressBarGoalColor}};
+    position: relative;
+    z-index: 1;
+  }

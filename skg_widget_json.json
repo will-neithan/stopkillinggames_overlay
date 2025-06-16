@@ -1,0 +1,291 @@
+{
+  "widgetBackgroundEnabled": {
+    "group": "General",
+    "type": "checkbox",
+    "label": "Background Enabled",
+    "value": false
+  },
+  "widgetBackgroundColor": {
+    "group": "General",
+    "type": "colorpicker",
+    "label": "Background Color",
+    "value": "rgba(0,0,0,0)"
+  },
+  "widgetBackgroundPadding": {
+    "group": "General",
+    "type": "number",
+    "label": "Background Padding Size",
+    "value": 0,
+    "step": 1,
+    "min": 0
+  },
+  "widgetBackgroundRadius": {
+    "group": "General",
+    "type": "number",
+    "label": "Background Border Radius",
+    "value": 0,
+    "step": 1,
+    "min": 0
+  },
+  "widgetWidth": {
+    "group": "General",
+    "type": "number",
+    "label": "Width",
+    "value": 730,
+    "step": 10,
+    "min": 400,
+    "max": 800
+  },
+  "topText": {
+    "group": "Text (top)",
+    "type": "text",
+    "label": "Text",
+    "value": "HELP US SAVE THE GAMES YOU LOVE, SIGN EU PETITION!"
+  },
+  "topTextfont": {
+    "group": "Text (top)",
+    "type": "googleFont",
+    "label": "Font (recommended alternative: Rubik)",
+    "value": "Architects Daughter"
+  },
+  "topTextFontSize": {
+    "group": "Text (top)",
+    "type": "number",
+    "label": "Font Size",
+    "value": 35,
+    "step": 1,
+    "min": 1
+  },
+  "topTextColor": {
+    "group": "Text (top)",
+    "type": "colorpicker",
+    "label": "Text Color",
+    "value": "#000000"
+  },
+  "topTextFontWeight": {
+    "group": "Text (top)",
+    "type": "dropdown",
+    "label": "Font Weight",
+    "value": "700",
+    "options": {
+      "400": "Regular",
+      "700": "Bold"
+    }
+  },
+  "topTextFontStyle": {
+    "group": "Text (top)",
+    "type": "dropdown",
+    "label": "Font Style",
+    "value": "normal",
+    "options": {
+      "normal": "Normal",
+      "italic": "Italic"
+    }
+  },
+  "progressBarFont": {
+    "group": "Progress Bar (middle)",
+    "type": "googleFont",
+    "label": "Font",
+    "value": "Rubik"
+  },
+  "progressBarFontSize": {
+    "group": "Progress Bar (middle)",
+    "type": "number",
+    "label": "Font Size",
+    "value": 25,
+    "step": 1,
+    "min": 1
+  },
+  "progressBarFontWeight": {
+    "group": "Progress Bar (middle)",
+    "type": "dropdown",
+    "label": "Font Weight",
+    "value": "bold",
+    "options": {
+      "normal": "Normal",
+      "bold": "Bold"
+    }
+  },
+  "progressBarFontStyle": {
+    "group": "Progress Bar (middle)",
+    "type": "dropdown",
+    "label": "Font Style",
+    "value": "normal",
+    "options": {
+      "normal": "Normal",
+      "italic": "Italic"
+    }
+  },
+  "progressBarSignaturesColor": {
+    "group": "Progress Bar (middle)",
+    "type": "colorpicker",
+    "label": "SIGNATURES NUMBER Color (left)",
+    "value": "#ffffff"
+  },
+  "progressBarSignaturesBackgroundColor": {
+    "group": "Progress Bar (middle)",
+    "type": "colorpicker",
+    "label": "SIGNATURES BACKGROUND Color (left)",
+    "value": "rgba(30, 68, 138, 1)"
+  },
+  "progressBarGoalColor": {
+    "group": "Progress Bar (middle)",
+    "type": "colorpicker",
+    "label": "GOAL NUMBER Color (right)",
+    "value": "#ffffff"
+  },
+  "progressBarGoalBackgroundColor": {
+    "group": "Progress Bar (middle)",
+    "type": "colorpicker",
+    "label": "GOAL BACKGROUND Color (right)",
+    "value": "rgba(100, 100, 100, 1)"
+  },
+  "progressBarHeight": {
+    "group": "Progress Bar (middle)",
+    "type": "number",
+    "label": "Bar Height (Thickness)",
+    "value": 11,
+    "step": 1,
+    "min": 0
+  },
+  "progressBarBackgroundRadius": {
+    "group": "Progress Bar (middle)",
+    "type": "number",
+    "label": "Bar Border Radius",
+    "value": 23,
+    "step": 1,
+    "min": 0
+  },
+  "countdownfont": {
+    "group": "Countdown (bottom left)",
+    "type": "googleFont",
+    "label": "Font",
+    "value": "Architects Daughter"
+  },
+  "countdownFontSize": {
+    "group": "Countdown (bottom left)",
+    "type": "number",
+    "label": "Font Size",
+    "value": 30,
+    "step": 1,
+    "min": 1
+  },
+  "countdownUpperCase": {
+    "group": "Countdown (bottom left)",
+    "type": "checkbox",
+    "label": "Uppercase Letters Applied",
+    "value": true
+  },
+  "countdownColor": {
+    "group": "Countdown (bottom left)",
+    "type": "colorpicker",
+    "label": "Text Color",
+    "value": "#000000"
+  },
+  "countdownFontWeight": {
+    "group": "Countdown (bottom left)",
+    "type": "dropdown",
+    "label": "Font Weight",
+    "value": "bold",
+    "options": {
+      "normal": "Normal",
+      "bold": "Bold"
+    }
+  },
+  "countdownFontStyle": {
+    "group": "Countdown (bottom left)",
+    "type": "dropdown",
+    "label": "Font Style",
+    "value": "normal",
+    "options": {
+      "normal": "Normal",
+      "italic": "Italic"
+    }
+  },
+  "websitefont": {
+    "group": "Website (bottom right)",
+    "type": "googleFont",
+    "label": "Font",
+    "value": "Rubik"
+  },
+  "websiteFontSize": {
+    "group": "Website (bottom right)",
+    "type": "number",
+    "label": "Font Size",
+    "value": 30,
+    "step": 1,
+    "min": 1
+  },
+  "websiteColor": {
+    "group": "Website (bottom right)",
+    "type": "colorpicker",
+    "label": "Text Color",
+    "value": "#1E448A"
+  },
+  "websiteFontWeight": {
+    "group": "Website (bottom right)",
+    "type": "dropdown",
+    "label": "Font Weight",
+    "value": "bold",
+    "options": {
+      "normal": "Normal",
+      "bold": "Bold"
+    }
+  },
+  "websiteFontStyle": {
+    "group": "Website (bottom right)",
+    "type": "dropdown",
+    "label": "Font Style",
+    "value": "normal",
+    "options": {
+      "normal": "Normal",
+      "italic": "Italic"
+    }
+  },
+  "websiteBackgroundColor": {
+    "group": "Website (bottom right)",
+    "type": "colorpicker",
+    "label": "Background Color",
+    "value": "rgba(253, 203, 11, 1)"
+  },
+  "websiteBackgroundPadding": {
+    "group": "Website (bottom right)",
+    "type": "number",
+    "label": "Background Padding Size",
+    "value": 16,
+    "step": 1,
+    "min": 0
+  },
+  "websiteBackgroundRadius": {
+    "group": "Website (bottom right)",
+    "type": "number",
+    "label": "Background Border Radius",
+    "value": 24,
+    "step": 1,
+    "min": 0
+  },
+  "widgetName": {
+    "group": "About",
+    "type": "hidden",
+    "label": "Stop Killing Games Overlay (unofficial)",
+    "value": "Stop Killing Games Overlay (unofficial)"
+  },
+  "widgetVersion": {
+    "group": "About",
+    "type": "hidden",
+    "label": "Version: 1.0.0",
+    "value": "1.0.0"
+  },
+  "widgetAuthor": {
+    "group": "About",
+    "type": "hidden",
+    "label": "Author: Will Neithan",
+    "value": "Will Neithan"
+  },
+  "widgetGithubUrl": {
+    "group": "About",
+    "type": "hidden",
+    "label": "Github: stopkillinggames_overlay",
+    "value": "https://github.com/will-neithan/stopkillinggames_overlay"
+  }
+}
