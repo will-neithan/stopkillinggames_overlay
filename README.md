@@ -70,7 +70,7 @@ The same guides for installation and integration but accompanied by screenshots.
 ### 1. Installation (screenshots)
 
 1. Log into your Streamelements account and navigate to _Streaming tools_ -> _Overlays_
-<img src="readme_images/overlay_inconspicuous_conspicuous_v2.png" alt="overlay visibility comparison" />
+<img src="readme_images/1. Log into your Streamelements account and navigate to Streaming tools-Overlays.png" alt="installation step 1" />
 
 2. Click the _NEW OVERLAY_ button
 3. Set overlay resolution to **1080p** and click _START_
