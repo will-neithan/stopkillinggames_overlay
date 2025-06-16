@@ -1,6 +1,15 @@
 # Stop Killing Games overlay
 Stop Killing Games initiative petition stream overlay. I am not associated with any organizers of Stop Killing Games.
 
+- [About](#about)
+- [Installation](#installation)
+    - [1. Direct Link](#1-direct-link)
+    - [2. Copy/Paste Source Files](#2-copypaste-source-files)
+- [Integration (OBS Studio)](#integration-obs-studio)
+- [Image Guides](#image-guides)
+    - [Installation (screenshots)](#installation-screenshots)
+    - [Integration (screenshots)](#integration-screenshots)
+
 ## About
 Stream overlay tracking the current signature count of Stop Killing Games EU petition. Created in Streamelement. 
 Almost fully customizable in Streamelements editor UI, text, fonts, sizes, colors, backgrounds.
@@ -41,3 +50,27 @@ If for any reason the direct link does not work, you need to create new custom w
 14. Close it right away by clicking the _DONE_ button
 15. Then click the _SAVE_ button again and once more refresh the page. The overlay should be properly loaded now.
 16. Go to _Settings_ in the left UI panel and customize the values of the overlay to fit your style
+
+## Integration (OBS Studio)
+
+Adding the overlay to OBS Studio works the same as adding any other overlay
+
+1. Copy the overlay URL by clicking the link icon
+2. In OBS Studio, click the _+_ button in _Sources_ dock
+3. Click the _Browser_ option
+4. In the _Create/Select Source_ popup, type in name for the overlay and click _OK_ button
+5. In the _Properties_ popup clear the _URL_ field and paste in the **overlay URL**, clear _Width_ field and type in value **1920**, clear the _Height_ field and type in **1080**.
+6. Click the _OK_ button and the overlay should be visible in the _Preview_
+7. Resize the overlay by moving the corners of its bouding box and drag the overlay to desired position
+
+## Image guides
+
+The same guides for installation and integration but accompanied by screenshots.
+
+### Installation (screenshots)
+
+blank
+
+### Integration (screenshots)
+
+blank
