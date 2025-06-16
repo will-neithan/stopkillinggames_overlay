@@ -7,8 +7,8 @@ Stop Killing Games initiative petition stream overlay. I am not associated with 
     - [2. Copy/Paste Source Files](#2-copypaste-source-files)
 - [Integration (OBS Studio)](#integration-obs-studio)
 - [Image Guides](#image-guides)
-    - [Installation (screenshots)](#installation-screenshots)
-    - [Integration (screenshots)](#integration-screenshots)
+    - [1. Installation (screenshots)](#1-installation-screenshots)
+    - [2. Integration (screenshots)](#2-integration-screenshots)
 
 ## About
 Stream overlay tracking the current signature count of Stop Killing Games EU petition. Created in Streamelement. 
@@ -67,10 +67,10 @@ Adding the overlay to OBS Studio works the same as adding any other overlay
 
 The same guides for installation and integration but accompanied by screenshots.
 
-### Installation (screenshots)
+### 1. Installation (screenshots)
 
 blank
 
-### Integration (screenshots)
+### 2. Integration (screenshots)
 
 blank
