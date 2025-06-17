@@ -118,7 +118,34 @@ The same guides for installation and integration but accompanied by screenshots.
 16. Go to _Settings_ in the left UI panel and customize the values of the overlay to fit your style
 <img src="readme_images/16. Go to Settings in the left UI panel and customize the values of the overlay to fit your style.png" alt="installation step 16" />
 
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
 
 ### 2. Integration (screenshots)
 
-blank
+1. Copy the overlay URL by clicking the link icon
+<img src="readme_images/1. Copy the overlay URL by clicking the link icon.png" alt="integration step 1" />
+
+2. In OBS Studio, click the _+_ button in _Sources_ dock
+<img src="readme_images/2. In OBS Studio, click the + button in Sources dock.png" alt="integration step 2" />
+
+3. Click the _Browser_ option
+<img src="readme_images/3. Click the Browser option.png" alt="integration step 3" />
+
+4. In the _Create/Select Source_ popup, type in name for the overlay and click _OK_ button
+<img src="readme_images/4. In the CreateSelect Source popup, type in name for the overlay and click OK button.png" alt="integration step 4" />
+
+5. In the _Properties_ popup clear the _URL_ field and paste in the **overlay URL**, clear _Width_ field and type in value **1920**, clear the _Height_ field and type in **1080**
+<img src="readme_images/5. In the Properties popup clear the URL field and paste in the overlay URL, clear Width field and type in value 1920, clear the Height field and type in 1080.png" alt="integration step 5" />
+
+6. Click the _OK_ button and the overlay should be visible in the _Preview_
+<img src="readme_images/6. Click the OK button and the overlay should be visible in the Preview.png" alt="integration step 6" />
+
+7. Resize the overlay by moving the corners of its bouding box and drag the overlay to desired position
+<img src="readme_images/7. Resize the overlay by moving the corners of its bouding box and drag the overlay to desired position.png" alt="integration step 7" />
+
