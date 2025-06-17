@@ -14,7 +14,7 @@ Stop Killing Games initiative petition stream overlay. I am not associated with 
 Stream overlay tracking the current signature count of Stop Killing Games EU petition. Created in Streamelement. 
 Almost fully customizable in Streamelements editor UI, text, fonts, sizes, colors, backgrounds.
 - choose, if to make the overlay blend in or flashy
-<img src="readme_images/overlay_inconspicuous_conspicuous_v2.png" alt="overlay visibility comparison" />
+<img src="readme_images/overlay_inconspicuous_conspicuous_v3.png" alt="overlay visibility comparison" />
 
 ## Installation
 Both installation methods require you to have Streamelements account and be logged in your account.
