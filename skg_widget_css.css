@@ -18,6 +18,16 @@
   #fireworksVideo.fadeOut {
     opacity: 0;
   }
+#divider {
+  opacity: 0;
+  width: 1%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 1;
+  background: {{progressGoalDivider}};
+}
 #progress {
   float: right;
   color: white;
@@ -121,5 +131,5 @@
   #progress .endgame .amount {
     color: {{progressBarGoalColor}};
     position: relative;
-    z-index: 1;
+    z-index: 2;
   }
