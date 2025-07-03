@@ -82,6 +82,12 @@
       "italic": "Italic"
     }
   },
+  "progressGoalDivider": {
+    "group": "Progress Bar (middle)",
+    "type": "colorpicker",
+    "label": "Goal Divider Color",
+    "value": "#000000"
+  },
   "progressBarFont": {
     "group": "Progress Bar (middle)",
     "type": "googleFont",
@@ -273,8 +279,8 @@
   "widgetVersion": {
     "group": "About",
     "type": "hidden",
-    "label": "Version: 1.0.0",
-    "value": "1.0.0"
+    "label": "Version: 1.1.0",
+    "value": "1.1.0"
   },
   "widgetAuthor": {
     "group": "About",
