@@ -1,5 +1,7 @@
 // Signatures goal number
-const goalSignatures = 1000000;
+let goalSignatures = 1000000;
+// New signature goal number after goal is reached
+const newGoalSignatures = 1200000;
 //
 // *** FUN SECTION *** //
 //
@@ -7,7 +9,7 @@ const goalSignatures = 1000000;
 //    if you want to see fireworks.
 // Don't forget to change it back and save it afterwards!
 //
-//const goalSignatures = 400000;
+//let goalSignatures = 400000;
 //
 // *** END FUN SECTION *** //
 //
@@ -37,7 +39,14 @@ function fetchData() {
       // Add signature count and goal numbers to HTML elements
       $('#progress .endgame .amount').text(goalSignaturesFormatted);
       $('#progress .loading .amount').text(signatureCountFormatted);
-
+      // Set divider opacity to 100%. Code is placed here so the divider shows
+      //    after the post-goal new goal (1.2M) update
+      if (goalVideoPlayed) {
+        $('#divider').css(
+          {
+            'opacity': 1
+          });
+      }
       // Calculate progress in percent for progress bar visuals
       const percentLoading = doPercent(signatureCount, goalSignatures);
       // Edit width of progress bar according to the percentage in css
@@ -101,6 +110,21 @@ function fetchData() {
             ,3000);
           }
         ,35000);
+
+        // Adjust progress bar to new signature goal after goal is reached to encourage
+        //    people to keep signing the petition
+        goalSignatures = newGoalSignatures;
+        const barWidth = document.getElementById("bar").offsetWidth;
+        const goalWidth = document.getElementById("goal").offsetWidth;
+        if (barWidth && widgetWidth) {
+          // Position the divider before the goal number on progress bar
+          const dividerPosition = barWidth - goalWidth - (goalWidth / 3);
+          $('#divider').css(
+          {
+            'left': dividerPosition + 'px',
+          });
+        }
+
       }
     }
   };
