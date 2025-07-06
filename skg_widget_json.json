@@ -1,4 +1,12 @@
 {
+  "widgetSignatureGoal": {
+    "group": "General",
+    "type": "number",
+    "label": "Signature Count Goal",
+    "value": 1000000,
+    "step": 1,
+    "min": 0
+  },
   "widgetBackgroundEnabled": {
     "group": "General",
     "type": "checkbox",
