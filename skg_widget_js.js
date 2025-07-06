@@ -1,7 +1,7 @@
 // Signatures goal number
 let goalSignatures = 1000000;
 // New signature goal number after goal is reached
-const newGoalSignatures = 1200000;
+let newGoalSignatures = 1000000;
 //
 // *** FUN SECTION *** //
 //
@@ -218,6 +218,9 @@ window.addEventListener('onWidgetLoad', function (obj) {
 
   // Save countdown upper case checkbox state to variable
   upperCaseCountdown = fieldData.countdownUpperCase;
+
+  // Save signature goal from settings to variable
+  newGoalSignatures = fieldData.widgetSignatureGoal;
   
   // Draw and apply background settings if background checkbox is checked
   if (fieldData.widgetBackgroundEnabled) {
