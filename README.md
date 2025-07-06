@@ -21,9 +21,9 @@ Both installation methods require you to have Streamelements account and be logg
 
 ### 1. Direct link
 Click on the link below (opens in current tab) or copy and paste the URL to the browser address bar. 
-You will be redirected to your Streamelements overlay page with "Stop Killing Games Overlay (unofficial) v1.1.0" already imported.
+You will be redirected to your Streamelements overlay page with "Stop Killing Games Overlay (unofficial) v1.2.0" already imported.
 
-<a href="https://streamelements.com/dashboard/overlays/share/6866755bf735e81166ab25a1" target="_blank">https://streamelements.com/dashboard/overlays/share/6866755bf735e81166ab25a1</a>
+<a href="https://streamelements.com/dashboard/overlays/share/686a77dc97c384d09bddf063" target="_blank">https://streamelements.com/dashboard/overlays/share/686a77dc97c384d09bddf063</a>
 
 ### 2. Copy/Paste source files
 If for any reason the direct link does not work, you need to create new custom widget and paste the source files there.
