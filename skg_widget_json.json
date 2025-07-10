@@ -1,9 +1,17 @@
 {
-  "widgetSignatureGoal": {
+  "widgetSignatureMainGoal": {
     "group": "General",
     "type": "number",
-    "label": "Signature Count Goal",
+    "label": "Signature Count Main Goal",
     "value": 1000000,
+    "step": 1,
+    "min": 0
+  },
+  "widgetSignatureSecondaryGoal": {
+    "group": "General",
+    "type": "number",
+    "label": "Signature Count Secondary Goal",
+    "value": 1400000,
     "step": 1,
     "min": 0
   },
@@ -90,12 +98,6 @@
       "italic": "Italic"
     }
   },
-  "progressGoalDivider": {
-    "group": "Progress Bar (middle)",
-    "type": "colorpicker",
-    "label": "Goal Divider Color",
-    "value": "#000000"
-  },
   "progressBarFont": {
     "group": "Progress Bar (middle)",
     "type": "googleFont",
@@ -139,8 +141,14 @@
   "progressBarSignaturesBackgroundColor": {
     "group": "Progress Bar (middle)",
     "type": "colorpicker",
-    "label": "SIGNATURES BACKGROUND Color (left)",
+    "label": "SIG. MAIN GOAL BG Color",
     "value": "rgba(30, 68, 138, 1)"
+  },
+  "progressBarSignaturesSecondaryBackgroundColor": {
+    "group": "Progress Bar (middle)",
+    "type": "colorpicker",
+    "label": "SIG. SECONDARY GOAL BG Color",
+    "value": "rgba(229, 136, 68, 1)"
   },
   "progressBarGoalColor": {
     "group": "Progress Bar (middle)",
@@ -151,7 +159,7 @@
   "progressBarGoalBackgroundColor": {
     "group": "Progress Bar (middle)",
     "type": "colorpicker",
-    "label": "GOAL BACKGROUND Color (right)",
+    "label": "GOAL BACKGROUND Color",
     "value": "rgba(100, 100, 100, 1)"
   },
   "progressBarHeight": {
@@ -169,6 +177,12 @@
     "value": 23,
     "step": 1,
     "min": 0
+  },
+  "progressBarGoalDividerFlat": {
+    "group": "Progress Bar (middle)",
+    "type": "checkbox",
+    "label": "Main/Secondary Goal Divider (checked: flat | unchecked: radius)",
+    "value": true
   },
   "countdownfont": {
     "group": "Countdown (bottom left)",
@@ -287,8 +301,8 @@
   "widgetVersion": {
     "group": "About",
     "type": "hidden",
-    "label": "Version: 1.1.0",
-    "value": "1.1.0"
+    "label": "Version: 1.3.0",
+    "value": "1.3.0"
   },
   "widgetAuthor": {
     "group": "About",
@@ -301,5 +315,17 @@
     "type": "hidden",
     "label": "Github: stopkillinggames_overlay",
     "value": "https://github.com/will-neithan/stopkillinggames_overlay"
+  },
+  "developerMainGoalReached": {
+    "group": "Developer Settings (DO NOT CHANGE)",
+    "type": "checkbox",
+    "label": "Main Goal Reached (automatic setting)",
+    "value": false
+  },
+  "developerSecondaryGoalReached": {
+    "group": "Developer Settings (DO NOT CHANGE)",
+    "type": "checkbox",
+    "label": "Secondary Goal Reached (automatic setting)",
+    "value": false
   }
 }
