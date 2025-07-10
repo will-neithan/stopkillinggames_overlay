@@ -20,13 +20,13 @@
   }
 #divider {
   opacity: 0;
-  width: 1%;
+  width: {{progressBarBackgroundRadius}}px;
   height: 100%;
   position: absolute;
   top: 0;
-  left: 50%;
+  right: 0;
   z-index: 1;
-  background: {{progressGoalDivider}};
+  background: {{progressBarSignaturesBackgroundColor}};
 }
 #progress {
   float: right;
@@ -103,7 +103,7 @@
     position: relative;
     flex-wrap: wrap; 
     }
-    #progress #bar::before , #progress #bar .loading {
+    #progress #bar::before , #progress #bar .loading , #progress #bar .loadingSecondary {
       content: '';
       background: {{progressBarGoalBackgroundColor}};
       border-radius: {{progressBarBackgroundRadius}}px; 
@@ -112,19 +112,24 @@
       position: absolute;
       left: 0;
       top: 0;
-      z-index: -2; }
-    #progress #bar .loading {
+      z-index: -2; 
+    }
+    #progress #bar .loading , #progress #bar .loadingSecondary {
       background: {{progressBarSignaturesBackgroundColor}};
       min-width: 13%;
       width: 13%;
       z-index: 0;
       display: flex;
       align-items: center;
-      transition: .5s all ease-in-out; }
+      transition: .5s all ease-in-out; 
+    }
       #progress #bar .loading .amount {
         position: relative;
         left: 24px;
-         }
+      }
+    #progress #bar .loadingSecondary {
+      background: {{progressBarSignaturesSecondaryBackgroundColor}};
+    }
   #progress .loading .amount {
     color: {{progressBarSignaturesColor}};
   }
