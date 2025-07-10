@@ -1,24 +1,19 @@
-// Signatures goal number
-let goalSignatures = 1000000;
-// New signature goal number after goal is reached
-let newGoalSignatures = 1000000;
-//
-// *** FUN SECTION *** //
-//
-// Comment out the "goalSignature" line above and uncomment the "goalSignatures" line below 
-//    if you want to see fireworks.
-// Don't forget to change it back and save it afterwards!
-//
-//let goalSignatures = 400000;
-//
-// *** END FUN SECTION *** //
-//
+// Signatures main goal number
+let signatureMainGoal = null;
+// Signature secondary goal number after main goal is reached
+let signatureSecondaryGoal = null;
+// Current goal stage. Either main or secondary.
+let signatureCurrentGoal = null;
 // Deadline date adjusted to Belgium time UTC+2, so UTC deadline needs to be -2 hours to match
 const countDownDate = new Date("2025-07-31T21:59:59Z").getTime();
 // Upper case checkbox true/false variable
-let upperCaseCountdown = false;
-// Boolean variable so that end-goal video plays only once every widget load
-let goalVideoPlayed = false;
+let upperCaseCountdown = null;
+// Boolean variable so that end-goal video for main goal plays only once
+let goalMainVideoPlayed = null;
+// Boolean variable so that end-goal video for secondary goal plays only once
+let goalSecondaryVideoPlayed = null;
+// Boolean variable for setting if main/secondary flat goal divider is active
+let goalDividerFlat = null;
 // Border radius for end-goal video so it matches background
 let fireworksVideoBorderRadius = null;
 
@@ -32,43 +27,95 @@ function fetchData() {
     if (xhr.readyState === 4 && xhr.status === 200) {
       // Parse JSON and extract signature count data
       const signatureCount = JSON.parse(xhr.responseText).signatureCount;
-      // Format numbers with spaces
-      const goalSignaturesFormatted = formatWithSpaces(goalSignatures);
-      const signatureCountFormatted = formatWithSpaces(signatureCount);
-
-      // Add signature count and goal numbers to HTML elements
-      $('#progress .endgame .amount').text(goalSignaturesFormatted);
-      $('#progress .loading .amount').text(signatureCountFormatted);
-      // Set divider opacity to 100%. Code is placed here so the divider shows
-      //    after the post-goal new goal (1.2M) update
-      if (goalVideoPlayed) {
-        $('#divider').css(
-          {
-            'opacity': 1
-          });
-      }
-      // Calculate progress in percent for progress bar visuals
-      const percentLoading = doPercent(signatureCount, goalSignatures);
-      // Edit width of progress bar according to the percentage in css
-      $('#progress .loading').css(
-      {
-        'width': percentLoading + '%'
-      });
+      //
+      // TESTING
+      //
+      // For testing the widget behavior under different signature counts,
+      //   comment out the above definition of "signatureCount", uncomment
+      //   the below definition of "signatureCount" and change the value
+      //   to fit your test case.
+      //const signatureCount = 1500000;
+      //
+      // I am drawing the progress bar here at the beginning because if goal is reached,
+      //   I want the new secondary goal be drawn after goal video is played
+      drawProgressBar (signatureCount,signatureCurrentGoal);
       
-      // Checking if signature goal is reached to play celebration video, if video has not been played yet this widget session
-      if (signatureCount >= goalSignatures && !goalVideoPlayed) {
-        // change the variable to true to block celebration video at next interval data fetch
-        goalVideoPlayed = true;
-        // add video element to HTML with link and properties
-        const fireworksDiv = document.getElementById("fireworks");
+      // Checking if current signature goal is reached to play celebration video.
+      if (signatureCount >= signatureCurrentGoal) {
+        // Check which goal stage is now, main or secondary based on videoplayed variables
+        if (!goalMainVideoPlayed) {
+          // Change the variable to true to block celebration video at next interval data fetch
+          goalMainVideoPlayed = true;
+          // Change external setting, so end video doesn't play at next reload
+          SE_API.setField('developerMainGoalReached', true, false);
+          // Play end goal celebration video.
+          playGoalVideo();
+          // Push current goal to secondary stage, if setup
+          if (signatureSecondaryGoal) {
+            signatureCurrentGoal = signatureSecondaryGoal;
+          }
+        } else if (!goalSecondaryVideoPlayed) {
+          // Change the variable to true to block celebration video at next interval data fetch
+          goalSecondaryVideoPlayed = true;
+          // Change external setting, so end video doesn't play at next reload
+          SE_API.setField('developerSecondaryGoalReached', true, false);
+          // Play end goal celebration video.
+          playGoalVideo();
+        }
+      //
+      // These else clauses serve to reset the external settings.
+      //   Otherwise if new counter is setup the old settings would remain
+      //   For example, secondary goal is reached and consecutively updated
+      //   to higher number. In that case I need to reset the secondary
+      //   videoplayed and goalreached to false. This logic should cover
+      //   all possible options with main and secondary goals.
+      //
+      // Checking if current goal is in main stage or secondary
+      } else if (signatureCount < signatureMainGoal) {
+        // Current signature count is lower than main goal so videoplayed
+        //   and goal reached need to be set to false.
+        goalMainVideoPlayed = false;
+        goalSecondaryVideoPlayed = false;
+        SE_API.setField('developerMainGoalReached', false, false);
+        SE_API.setField('developerSecondaryGoalReached', false, false);
+        // Reset current goal to main goal
+        signatureCurrentGoal = signatureMainGoal;
+        // Redraw the progress bar with current goal
+        drawProgressBar (signatureCount,signatureCurrentGoal);
+      } else {
+        // Current signature count is above main goal but bellow current goal
+        //   so it is in secondary goal stage. Therefore reset secondary variables,
+        //   so they can get activated when the secondary goal is reached.
+        goalSecondaryVideoPlayed = false;
+        SE_API.setField('developerSecondaryGoalReached', false, false);
+      }
+    }
+  };
+  xhr.send();
+}
+
+// First call
+fetchData();
+
+// Call at interval
+setInterval(fetchData, 30000);
+})();
+
+// Play goal video function. The length of goal video is tied a bit to the interval
+//   of fetchData function. I want the progress bar secondary goal to be updated
+//   sometime near the end of the goal video, so when fetchData is 30 secs and 
+//   goal video 35 secs, the secondary goal is drawn near the video end.
+function playGoalVideo() {
+  // Add video element to HTML with link and properties
+  const fireworksDiv = document.getElementById("fireworks");
         fireworksDiv.innerHTML = `
         <video id="fireworksVideo" muted autoplay loop>
           <source src="https://customer-b8r4q0hmujdj1xhm.cloudflarestream.com/4b390c31e921fd4203e14413c2845ccb/downloads/default.mp4" type="video/mp4">
         </video>
         `;
         // I coundn't make the #fireworks element or its child elements to stretch
-        //    based on #progress element dimensions, so I hardcoded width and height
-        //    of the #progress element to the #fireworksVideo video element
+        //   based on #progress element dimensions, so I hardcoded width and height
+        //   of the #progress element to the #fireworksVideo video element
         const widgetWidth = document.getElementById("progress").offsetWidth;
         const widgetHeight = document.getElementById("progress").offsetHeight;
         if (widgetWidth) {
@@ -110,40 +157,60 @@ function fetchData() {
             ,3000);
           }
         ,35000);
-
-        // Adjust progress bar to new signature goal after goal is reached to encourage
-        //    people to keep signing the petition
-        goalSignatures = newGoalSignatures;
-        const barWidth = document.getElementById("bar").offsetWidth;
-        const goalWidth = document.getElementById("goal").offsetWidth;
-        if (barWidth && widgetWidth) {
-          // Position the divider before the goal number on progress bar
-          const dividerPosition = barWidth - goalWidth - (goalWidth / 3);
-          $('#divider').css(
-          {
-            'left': dividerPosition + 'px',
-          });
-        }
-
-      }
-    }
-  };
-  xhr.send();
 }
 
-// First call
-fetchData();
-
-// Call at interval
-setInterval(fetchData, 30000);
-})();
+// Draw progress bar
+function drawProgressBar(count, goal) {
+  // Add formatted signature count and goal numbers to HTML elements
+  $('#progress .endgame .amount').text(formatWithSpaces(goal));
+  $('#progress .loading .amount').text(formatWithSpaces(count));
+  // Set divider opacity to 100%. Divides the main and secondary goals
+  
+  // Edit width of secondary goal progress bar according to the progress percentage.
+  //   Even if secondary stage is not applicaple or not active yet, the bar is
+  //   hidden behind the main stage progress bar, so I can adjust it constantly.
+  $('#progress .loadingSecondary').css(
+  {
+    'width': doPercent(count, goal) + '%'
+  });
+  // If "signatureCurrentGoal" that goes into input to this function changes
+  //   to secondary goal, I want the main goal progress bar stuck on 100% of
+  //   the main goal signature count. I don't want the main goal bar to
+  //   strech to full width of the progress bar.
+  if (goalMainVideoPlayed) {
+    $('#progress .loading').css(
+    {
+      'width': doPercent(signatureMainGoal, goal) + '%'
+    });
+  // Edit width of main goal progress bar according to the progress percentage.
+  } else {
+    $('#progress .loading').css(
+    {
+      'width': doPercent(count, goal) + '%'
+    });
+  }
+  // Set divider opacity to 100% to switch from round divider to flat.
+  //   Divider works only in secondary goal stage.
+  if (goalMainVideoPlayed && signatureSecondaryGoal && goalDividerFlat) {
+    $('#divider').css(
+    {
+      'opacity': 1
+    });
+  // Set divider opacity to 0% if conditions are not met.
+  } else {
+    $('#divider').css(
+    {
+      'opacity': 0
+    });
+  }
+}
 
 // Format numbers with spaces by thousands
 function formatWithSpaces(num) {
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 }
 
-// Percentage calculation for progress bar visuals
+// Percentage calculation for progress bar visuals, always from 1% to 100%
 function doPercent( total, goal ) {
   const perc = total / goal;
   let amount = perc * 100;
@@ -156,7 +223,8 @@ function doPercent( total, goal ) {
   return amount;
 }
 
-// Calculation and HTML modification of countdown of petition deadline (function runs at 1s interval.. potential performance issues??)
+// Calculation and HTML modification of countdown of petition deadline
+//   (Function runs at 1s interval.. Potential performance issues? I have no idea.)
 const x = setInterval(function() {
 
   const now = new Date().getTime();
@@ -211,17 +279,45 @@ function upperCaseOrNot(text) {
   return upperCaseCountdown ? text.toUpperCase() : text;
 }
 
-window.addEventListener('onWidgetLoad', function (obj) {
-  
+// Fuction that runs when the widget loads.
+window.addEventListener('onWidgetLoad', function (obj) { 
   // Get field data for widget
   const fieldData = obj.detail.fieldData;
-
+  //
+  // VARIABLES
+  //
   // Save countdown upper case checkbox state to variable
   upperCaseCountdown = fieldData.countdownUpperCase;
-
-  // Save signature goal from settings to variable
-  newGoalSignatures = fieldData.widgetSignatureGoal;
-  
+  // Save signature main goal from settings to variable
+  signatureMainGoal = fieldData.widgetSignatureMainGoal;
+  // Save signature secondary goal from settings to variable
+  //   but only if secondary goal is bigger number than main goal.
+  //   Otherwise it stays null as defined at top of this document.
+  if (fieldData.widgetSignatureSecondaryGoal > signatureMainGoal) {
+    signatureSecondaryGoal = fieldData.widgetSignatureSecondaryGoal;
+  }
+  // Save main goal end-video played (signature threshhold reached) from settings to variable
+  goalMainVideoPlayed = fieldData.developerMainGoalReached;
+  // Save secondary goal end-video played (signature threshhold reached) from settings to variable
+  goalSecondaryVideoPlayed = fieldData.developerSecondaryGoalReached;
+  // Set current signature goal stage, either main or secondary.
+  //   Based on if secondary goal is setup and goalMainVideoPlayed variable.
+  //   Yes, yes, I know.. but this structure is more clear for me.
+  if (signatureSecondaryGoal) {
+    if (goalMainVideoPlayed) {
+      signatureCurrentGoal = signatureSecondaryGoal;
+    } else {
+      signatureCurrentGoal = signatureMainGoal;
+    }
+  } else {
+    signatureCurrentGoal = signatureMainGoal;
+  }
+  // Save goal divider checkbox settings to variable
+  goalDividerFlat = fieldData.progressBarGoalDividerFlat;
+  //
+  //
+  // VISUALS
+  //
   // Draw and apply background settings if background checkbox is checked
   if (fieldData.widgetBackgroundEnabled) {
     // If background color setting is filled out, add it to css
